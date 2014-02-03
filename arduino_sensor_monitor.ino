@@ -57,17 +57,17 @@ void checkMotionSensors(){
     if (checkMotionSensor(motionSensors[i]) != motionSensorsState[i]) {
       //Motion sensor state has changed
       motionSensorsState[i] = !motionSensorsState[i];
-      strcpy(c,"{'");
+      strcpy(c,"{\"");
       strcat(c, motionSensorLocation[i]); 
       //Serial.print(motionSensorsLocation[i]);
       if (motionSensorsState[i] == HIGH) {
             Serial.println("motion!");
-            strcat(c,"':'1'}");
+            strcat(c,"\":1}");
                  //Avviso.push("Alarm!", "Motion detected!", 0);  
       } else {
         //Serial.println(motionSensorsState[i]);  
          Serial.println("NoMotion!");
-         strcat(c,"':'0'}");
+         strcat(c,"\":0}");
       }
       notify(c);
     }
